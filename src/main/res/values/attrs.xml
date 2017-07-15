@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="drawable_width" format="dimension"/>
+    <attr name="drawable_height" format="dimension"/>
+    <attr name="drawableLeft" format="reference"/>
+    <attr name="drawableTop" format="reference"/>
+    <attr name="drawableRight" format="reference"/>
+    <attr name="drawableBottom" format="reference"/>
+
+    <declare-styleable name="DrawableTextView">
+        <attr name="drawable_width"/>
+        <attr name="drawable_height"/>
+        <attr name="drawableLeft"/>
+        <attr name="drawableTop"/>
+        <attr name="drawableRight"/>
+        <attr name="drawableBottom"/>
+    </declare-styleable>
+
+</resources>
