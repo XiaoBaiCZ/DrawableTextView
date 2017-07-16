@@ -21,7 +21,7 @@ public class DrawableCheckBox extends AppCompatCheckBox {
     public DrawableCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        Drawable[] drawables = DrawableUtil.getDrawable(context, attrs, defStyleAttr);
+        Drawable[] drawables = DrawableUtil.get().getDrawable(context, attrs, defStyleAttr);
 
         setCompoundDrawables(drawables[0], drawables[1], drawables[2], drawables[3]);
     }

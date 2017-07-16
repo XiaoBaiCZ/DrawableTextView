@@ -13,7 +13,14 @@ import android.util.AttributeSet;
 
 final class DrawableUtil {
 
-    public static Drawable[] getDrawable(Context context, AttributeSet attrs, int defStyleAttr){
+    private DrawableUtil(){
+    }
+
+    public static DrawableUtil get(){
+        return new DrawableUtil();
+    }
+
+    public Drawable[] getDrawable(Context context, AttributeSet attrs, int defStyleAttr){
         Drawable[] drawables = new Drawable[4];
 
         int width = -1, height = -1;
