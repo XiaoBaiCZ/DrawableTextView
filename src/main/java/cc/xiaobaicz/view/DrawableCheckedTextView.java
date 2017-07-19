@@ -10,12 +10,13 @@ import android.util.AttributeSet;
  */
 
 public class DrawableCheckedTextView extends AppCompatCheckedTextView {
+
     public DrawableCheckedTextView(Context context) {
         this(context, null);
     }
 
     public DrawableCheckedTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.checkedTextViewStyle);
     }
 
     public DrawableCheckedTextView(Context context, AttributeSet attrs, int defStyleAttr) {

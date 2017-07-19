@@ -13,6 +13,11 @@ import android.util.AttributeSet;
 
 final class DrawableUtil {
 
+    private Rect mRectL = new Rect(0, 0, -1, -1);
+    private Rect mRectT = new Rect(0, 0, -1, -1);
+    private Rect mRectR = new Rect(0, 0, -1, -1);
+    private Rect mRectB = new Rect(0, 0, -1, -1);
+
     private DrawableUtil(){
     }
 
@@ -23,8 +28,6 @@ final class DrawableUtil {
     public Drawable[] getDrawable(Context context, AttributeSet attrs, int defStyleAttr){
         Drawable[] drawables = new Drawable[4];
 
-        int width = -1, height = -1;
-
         final Resources.Theme theme = context.getTheme();
 
         TypedArray a = theme.obtainStyledAttributes(
@@ -34,9 +37,33 @@ final class DrawableUtil {
         for (int i = 0; i < n; i++) {
             int attr = a.getIndex(i);
             if (attr == R.styleable.DrawableTextView_drawable_width) {
-                width = a.getDimensionPixelSize(attr, -1);
+                int width = a.getDimensionPixelSize(attr, -1);
+                mRectL.right = width;
+                mRectT.right = width;
+                mRectR.right = width;
+                mRectB.right = width;
             } else if (attr == R.styleable.DrawableTextView_drawable_height) {
-                height = a.getDimensionPixelSize(attr, -1);
+                int height = a.getDimensionPixelSize(attr, -1);
+                mRectL.bottom = height;
+                mRectT.bottom = height;
+                mRectR.bottom = height;
+                mRectB.bottom = height;
+            } else if (attr == R.styleable.DrawableTextView_drawableLeft_width) {
+                mRectL.right = a.getDimensionPixelSize(attr, -1);
+            } else if (attr == R.styleable.DrawableTextView_drawableLeft_height) {
+                mRectL.bottom = a.getDimensionPixelSize(attr, -1);
+            } else if (attr == R.styleable.DrawableTextView_drawableTop_width) {
+                mRectT.right = a.getDimensionPixelSize(attr, -1);
+            } else if (attr == R.styleable.DrawableTextView_drawableTop_height) {
+                mRectT.bottom = a.getDimensionPixelSize(attr, -1);
+            } else if (attr == R.styleable.DrawableTextView_drawableRight_width) {
+                mRectR.right = a.getDimensionPixelSize(attr, -1);
+            } else if (attr == R.styleable.DrawableTextView_drawableRight_height) {
+                mRectR.bottom = a.getDimensionPixelSize(attr, -1);
+            } else if (attr == R.styleable.DrawableTextView_drawableBottom_width) {
+                mRectB.right = a.getDimensionPixelSize(attr, -1);
+            } else if (attr == R.styleable.DrawableTextView_drawableBottom_height) {
+                mRectB.bottom = a.getDimensionPixelSize(attr, -1);
             } else if (attr == R.styleable.DrawableTextView_drawableLeft) {
                 drawables[0] = a.getDrawable(attr);
             } else if (attr == R.styleable.DrawableTextView_drawableTop) {
@@ -50,14 +77,20 @@ final class DrawableUtil {
 
         a.recycle();
 
-        Rect rect = new Rect(0, 0, width, height);
-
-        for(int i = 0; i < drawables.length; i++){
-            if(drawables[i] != null)
-                drawables[i].setBounds(rect);
-        }
+        setDrawableBounds(drawables);
 
         return drawables;
+    }
+
+    void setDrawableBounds(Drawable[] drawable) {
+        if(drawable[0] != null)
+            drawable[0].setBounds(mRectL);
+        if(drawable[1] != null)
+            drawable[1].setBounds(mRectT);
+        if(drawable[2] != null)
+            drawable[2].setBounds(mRectR);
+        if(drawable[3] != null)
+            drawable[3].setBounds(mRectB);
     }
 
 }

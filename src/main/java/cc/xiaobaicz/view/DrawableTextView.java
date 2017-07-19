@@ -10,12 +10,13 @@ import android.util.AttributeSet;
  */
 
 public class DrawableTextView extends AppCompatTextView {
+
     public DrawableTextView(Context context) {
         this(context, null);
     }
 
     public DrawableTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, android.R.attr.textViewStyle);
     }
 
     public DrawableTextView(Context context, AttributeSet attrs, int defStyleAttr) {

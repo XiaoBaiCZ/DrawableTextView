@@ -10,12 +10,13 @@ import android.util.AttributeSet;
  */
 
 public class DrawableEditText extends AppCompatEditText {
+
     public DrawableEditText(Context context) {
         this(context, null);
     }
 
     public DrawableEditText(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.editTextStyle);
     }
 
     public DrawableEditText(Context context, AttributeSet attrs, int defStyleAttr) {

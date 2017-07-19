@@ -13,6 +13,7 @@ import android.widget.TextClock;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 public class DrawableTextClock extends TextClock {
+
     public DrawableTextClock(Context context) {
         this(context, null);
     }

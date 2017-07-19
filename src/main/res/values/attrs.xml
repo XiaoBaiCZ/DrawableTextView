@@ -3,6 +3,14 @@
 
     <attr name="drawable_width" format="dimension"/>
     <attr name="drawable_height" format="dimension"/>
+    <attr name="drawableLeft_width" format="dimension"/>
+    <attr name="drawableLeft_height" format="dimension"/>
+    <attr name="drawableTop_width" format="dimension"/>
+    <attr name="drawableTop_height" format="dimension"/>
+    <attr name="drawableRight_width" format="dimension"/>
+    <attr name="drawableRight_height" format="dimension"/>
+    <attr name="drawableBottom_width" format="dimension"/>
+    <attr name="drawableBottom_height" format="dimension"/>
     <attr name="drawableLeft" format="reference"/>
     <attr name="drawableTop" format="reference"/>
     <attr name="drawableRight" format="reference"/>
@@ -11,6 +19,14 @@
     <declare-styleable name="DrawableTextView">
         <attr name="drawable_width"/>
         <attr name="drawable_height"/>
+        <attr name="drawableLeft_width"/>
+        <attr name="drawableLeft_height"/>
+        <attr name="drawableTop_width"/>
+        <attr name="drawableTop_height"/>
+        <attr name="drawableRight_width"/>
+        <attr name="drawableRight_height"/>
+        <attr name="drawableBottom_width"/>
+        <attr name="drawableBottom_height"/>
         <attr name="drawableLeft"/>
         <attr name="drawableTop"/>
         <attr name="drawableRight"/>

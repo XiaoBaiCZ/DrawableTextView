@@ -10,12 +10,13 @@ import android.util.AttributeSet;
  */
 
 public class DrawableCheckBox extends AppCompatCheckBox {
+
     public DrawableCheckBox(Context context) {
         this(context, null);
     }
 
     public DrawableCheckBox(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.checkboxStyle);
     }
 
     public DrawableCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {
