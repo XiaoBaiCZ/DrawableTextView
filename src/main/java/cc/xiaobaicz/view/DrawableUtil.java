@@ -13,10 +13,10 @@ import android.util.AttributeSet;
 
 final class DrawableUtil {
 
-    private Rect mRectL = new Rect(0, 0, -1, -1);
-    private Rect mRectT = new Rect(0, 0, -1, -1);
-    private Rect mRectR = new Rect(0, 0, -1, -1);
-    private Rect mRectB = new Rect(0, 0, -1, -1);
+    final Rect mRectL = new Rect(0, 0, -1, -1);
+    final Rect mRectT = new Rect(0, 0, -1, -1);
+    final Rect mRectR = new Rect(0, 0, -1, -1);
+    final Rect mRectB = new Rect(0, 0, -1, -1);
 
     private DrawableUtil(){
     }
@@ -93,4 +93,14 @@ final class DrawableUtil {
             drawable[3].setBounds(mRectB);
     }
 
+    void setRect(Rect l, Rect t, Rect r, Rect b) {
+        if(l != null)
+            mRectL.set(l);
+        if(t != null)
+            mRectT.set(t);
+        if(r != null)
+            mRectR.set(r);
+        if(b != null)
+            mRectB.set(b);
+    }
 }
