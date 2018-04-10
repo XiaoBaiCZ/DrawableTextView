@@ -3,7 +3,10 @@ package cc.xiaobaicz.view;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
@@ -32,6 +35,9 @@ final class DrawableUtil {
 
         TypedArray a = theme.obtainStyledAttributes(
                 attrs, R.styleable.DrawableTextView, defStyleAttr, 0);
+
+        //图片id
+        final int[] D_IDS = new int[]{-1, -1, -1, -1};
 
         int n = a.getIndexCount();
         for (int i = 0; i < n; i++) {
@@ -65,32 +71,69 @@ final class DrawableUtil {
             } else if (attr == R.styleable.DrawableTextView_drawableBottom_height) {
                 mRectB.bottom = a.getDimensionPixelSize(attr, -1);
             } else if (attr == R.styleable.DrawableTextView_drawableLeft) {
-                drawables[0] = a.getDrawable(attr);
+                D_IDS[0] = a.getResourceId(attr, -1);
             } else if (attr == R.styleable.DrawableTextView_drawableTop) {
-                drawables[1] = a.getDrawable(attr);
+                D_IDS[1] = a.getResourceId(attr, -1);
             } else if (attr == R.styleable.DrawableTextView_drawableRight) {
-                drawables[2] = a.getDrawable(attr);
+                D_IDS[2] = a.getResourceId(attr, -1);
             } else if (attr == R.styleable.DrawableTextView_drawableBottom) {
-                drawables[3] = a.getDrawable(attr);
+                D_IDS[3] = a.getResourceId(attr, -1);
             }
         }
 
         a.recycle();
+
+        for(int i = 0; i < D_IDS.length; i++){
+            Rect rect;
+            switch (i){
+                default:
+                    rect = mRectL;
+                    break;
+                case 1:
+                    rect = mRectT;
+                    break;
+                case 2:
+                    rect = mRectR;
+                    break;
+                case 3:
+                    rect = mRectB;
+                    break;
+            }
+            if(D_IDS[i] != -1){
+                drawables[i] = compress(context, D_IDS[i], rect);
+            }
+        }
 
         setDrawableBounds(drawables);
 
         return drawables;
     }
 
-    void setDrawableBounds(Drawable[] drawable) {
-        if(drawable[0] != null)
-            drawable[0].setBounds(mRectL);
-        if(drawable[1] != null)
-            drawable[1].setBounds(mRectT);
-        if(drawable[2] != null)
-            drawable[2].setBounds(mRectR);
-        if(drawable[3] != null)
-            drawable[3].setBounds(mRectB);
+    private Drawable compress(Context context, int id, Rect rect){
+        Drawable drawable = null;
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(context.getResources(), id, options);
+        final int def_w = options.outWidth;
+        final int def_h = options.outHeight;
+
+        final int w = rect.width();
+        final int h = rect.height();
+
+        int size_w;
+        int sw = (size_w = def_w / w) > 0 ? size_w : 1;
+        int size_h;
+        int sh = (size_h = def_h / h) > 0 ? size_h : 1;
+        int size = sw > sh ? sh : sw;
+
+        options.inJustDecodeBounds = false;
+        options.inSampleSize = size;
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), id, options);
+
+        drawable = new BitmapDrawable(bitmap);
+
+        return drawable;
     }
 
     void setRect(Rect l, Rect t, Rect r, Rect b) {
@@ -102,5 +145,16 @@ final class DrawableUtil {
             mRectR.set(r);
         if(b != null)
             mRectB.set(b);
+    }
+
+    void setDrawableBounds(Drawable[] drawable){
+        if(drawable[0] != null)
+            drawable[0].setBounds(mRectL);
+        if(drawable[1] != null)
+            drawable[1].setBounds(mRectT);
+        if(drawable[2] != null)
+            drawable[2].setBounds(mRectR);
+        if(drawable[3] != null)
+            drawable[3].setBounds(mRectB);
     }
 }
