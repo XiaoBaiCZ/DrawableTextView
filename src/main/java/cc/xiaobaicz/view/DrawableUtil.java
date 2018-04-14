@@ -21,6 +21,9 @@ final class DrawableUtil {
     final Rect mRectR = new Rect(0, 0, -1, -1);
     final Rect mRectB = new Rect(0, 0, -1, -1);
 
+    //是否压缩，开启压缩则只能识别bitmap，默认不开启
+    boolean isCompress = false;
+
     private DrawableUtil(){
     }
 
@@ -71,38 +74,49 @@ final class DrawableUtil {
             } else if (attr == R.styleable.DrawableTextView_drawableBottom_height) {
                 mRectB.bottom = a.getDimensionPixelSize(attr, -1);
             } else if (attr == R.styleable.DrawableTextView_drawableLeft) {
-                D_IDS[0] = a.getResourceId(attr, -1);
+                D_IDS[0] = attr;
             } else if (attr == R.styleable.DrawableTextView_drawableTop) {
-                D_IDS[1] = a.getResourceId(attr, -1);
+                D_IDS[1] = attr;
             } else if (attr == R.styleable.DrawableTextView_drawableRight) {
-                D_IDS[2] = a.getResourceId(attr, -1);
+                D_IDS[2] = attr;
             } else if (attr == R.styleable.DrawableTextView_drawableBottom) {
-                D_IDS[3] = a.getResourceId(attr, -1);
+                D_IDS[3] = attr;
+            } else if (attr == R.styleable.DrawableTextView_compress) {
+                isCompress = a.getBoolean(attr, false);
+            }
+        }
+
+        if(isCompress){
+            for(int i = 0; i < D_IDS.length; i++){
+                Rect rect;
+                switch (i){
+                    default:
+                        rect = mRectL;
+                        break;
+                    case 1:
+                        rect = mRectT;
+                        break;
+                    case 2:
+                        rect = mRectR;
+                        break;
+                    case 3:
+                        rect = mRectB;
+                        break;
+                }
+                if(D_IDS[i] != -1){
+                    D_IDS[i] = a.getResourceId(D_IDS[i], -1);
+                    drawables[i] = compress(context, D_IDS[i], rect);
+                }
+            }
+        }else{
+            for(int i = 0; i < D_IDS.length; i++){
+                if(D_IDS[i] != -1){
+                    drawables[i] = a.getDrawable(D_IDS[i]);
+                }
             }
         }
 
         a.recycle();
-
-        for(int i = 0; i < D_IDS.length; i++){
-            Rect rect;
-            switch (i){
-                default:
-                    rect = mRectL;
-                    break;
-                case 1:
-                    rect = mRectT;
-                    break;
-                case 2:
-                    rect = mRectR;
-                    break;
-                case 3:
-                    rect = mRectB;
-                    break;
-            }
-            if(D_IDS[i] != -1){
-                drawables[i] = compress(context, D_IDS[i], rect);
-            }
-        }
 
         setDrawableBounds(drawables);
 

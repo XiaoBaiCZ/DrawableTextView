@@ -15,6 +15,7 @@
     <attr name="drawableTop" format="reference"/>
     <attr name="drawableRight" format="reference"/>
     <attr name="drawableBottom" format="reference"/>
+    <attr name="compress" format="boolean"/>
 
     <declare-styleable name="DrawableTextView">
         <attr name="drawable_width"/>
@@ -31,6 +32,7 @@
         <attr name="drawableTop"/>
         <attr name="drawableRight"/>
         <attr name="drawableBottom"/>
+        <attr name="compress"/>
     </declare-styleable>
 
 </resources>

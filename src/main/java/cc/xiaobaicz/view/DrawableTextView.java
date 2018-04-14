@@ -42,8 +42,4 @@ public class DrawableTextView extends AppCompatTextView {
         setCompoundDrawables(drawables[0], drawables[1], drawables[2], drawables[3]);
     }
 
-    public void setDrawableAndBounds(Drawable[] drawables){
-        setCompoundDrawables(drawables[0], drawables[1], drawables[2], drawables[3]);
-    }
-
 }
