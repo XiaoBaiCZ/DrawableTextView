@@ -3,14 +3,14 @@ package cc.xiaobaicz.view;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatMultiAutoCompleteTextView;
 import android.util.AttributeSet;
+import android.widget.MultiAutoCompleteTextView;
 
 /**
  * Created by xiaobai on 2017/7/15.
  */
 
-public class DrawableMultiAutoCompleteTextView extends AppCompatMultiAutoCompleteTextView {
+public class DrawableMultiAutoCompleteTextView extends MultiAutoCompleteTextView {
 
     private DrawableUtil mUtil = DrawableUtil.get();
 
@@ -19,7 +19,7 @@ public class DrawableMultiAutoCompleteTextView extends AppCompatMultiAutoComplet
     }
 
     public DrawableMultiAutoCompleteTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.autoCompleteTextViewStyle);
+        this(context, attrs, android.R.attr.autoCompleteTextViewStyle);
     }
 
     public DrawableMultiAutoCompleteTextView(Context context, AttributeSet attrs, int defStyleAttr) {

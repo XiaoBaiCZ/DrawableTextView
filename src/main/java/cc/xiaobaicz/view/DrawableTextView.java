@@ -3,14 +3,14 @@ package cc.xiaobaicz.view;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+import android.widget.TextView;
 
 /**
  * Created by xiaobai on 2017/7/15.
  */
 
-public class DrawableTextView extends AppCompatTextView {
+public class DrawableTextView extends TextView {
 
     private DrawableUtil mUtil = DrawableUtil.get();
 

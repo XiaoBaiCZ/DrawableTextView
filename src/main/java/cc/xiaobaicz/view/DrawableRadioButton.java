@@ -3,15 +3,14 @@ package cc.xiaobaicz.view;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatRadioButton;
 import android.util.AttributeSet;
+import android.widget.RadioButton;
 
 /**
  * Created by xiaobai on 2017/7/15.
  */
 
-public class DrawableRadioButton extends AppCompatRadioButton {
+public class DrawableRadioButton extends RadioButton {
 
     private DrawableUtil mUtil = DrawableUtil.get();
 
@@ -20,7 +19,7 @@ public class DrawableRadioButton extends AppCompatRadioButton {
     }
 
     public DrawableRadioButton(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.radioButtonStyle);
+        this(context, attrs, android.R.attr.radioButtonStyle);
     }
 
     public DrawableRadioButton(Context context, AttributeSet attrs, int defStyleAttr) {

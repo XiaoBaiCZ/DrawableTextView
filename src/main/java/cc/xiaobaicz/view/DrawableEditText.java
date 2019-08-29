@@ -3,14 +3,14 @@ package cc.xiaobaicz.view;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
+import android.widget.EditText;
 
 /**
  * Created by xiaobai on 2017/7/15.
  */
 
-public class DrawableEditText extends AppCompatEditText {
+public class DrawableEditText extends EditText {
 
     private DrawableUtil mUtil = DrawableUtil.get();
 
@@ -19,7 +19,7 @@ public class DrawableEditText extends AppCompatEditText {
     }
 
     public DrawableEditText(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.editTextStyle);
+        this(context, attrs, android.R.attr.editTextStyle);
     }
 
     public DrawableEditText(Context context, AttributeSet attrs, int defStyleAttr) {

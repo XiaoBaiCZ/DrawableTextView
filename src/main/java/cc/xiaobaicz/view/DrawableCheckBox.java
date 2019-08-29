@@ -3,14 +3,14 @@ package cc.xiaobaicz.view;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatCheckBox;
 import android.util.AttributeSet;
+import android.widget.CheckBox;
 
 /**
  * Created by xiaobai on 2017/7/15.
  */
 
-public class DrawableCheckBox extends AppCompatCheckBox {
+public class DrawableCheckBox extends CheckBox {
 
     private DrawableUtil mUtil = DrawableUtil.get();
 
@@ -19,7 +19,7 @@ public class DrawableCheckBox extends AppCompatCheckBox {
     }
 
     public DrawableCheckBox(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.checkboxStyle);
+        this(context, attrs, android.R.attr.checkboxStyle);
     }
 
     public DrawableCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {

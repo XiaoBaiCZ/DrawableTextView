@@ -3,15 +3,14 @@ package cc.xiaobaicz.view;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+import android.widget.Button;
 
 /**
  * Created by xiaobai on 2017/7/15.
  */
 
-public class DrawableButton extends AppCompatButton {
+public class DrawableButton extends Button {
 
     private DrawableUtil mUtil = DrawableUtil.get();
 
@@ -20,7 +19,7 @@ public class DrawableButton extends AppCompatButton {
     }
 
     public DrawableButton(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.buttonStyle);
+        this(context, attrs, android.R.attr.buttonStyle);
     }
 
     public DrawableButton(Context context, AttributeSet attrs, int defStyleAttr) {

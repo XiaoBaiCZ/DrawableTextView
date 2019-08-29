@@ -3,14 +3,14 @@ package cc.xiaobaicz.view;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatCheckedTextView;
 import android.util.AttributeSet;
+import android.widget.CheckedTextView;
 
 /**
  * Created by xiaobai on 2017/7/15.
  */
 
-public class DrawableCheckedTextView extends AppCompatCheckedTextView {
+public class DrawableCheckedTextView extends CheckedTextView {
 
     private DrawableUtil mUtil = DrawableUtil.get();
 
@@ -19,7 +19,7 @@ public class DrawableCheckedTextView extends AppCompatCheckedTextView {
     }
 
     public DrawableCheckedTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.checkedTextViewStyle);
+        this(context, attrs, android.R.attr.checkedTextViewStyle);
     }
 
     public DrawableCheckedTextView(Context context, AttributeSet attrs, int defStyleAttr) {
